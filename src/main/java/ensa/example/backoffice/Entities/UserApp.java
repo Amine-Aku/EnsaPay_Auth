@@ -43,16 +43,16 @@ public  class UserApp {
 
 
 
-    // @Column(name = "cinRecto",columnDefinition = "LONGBLOB")
-    // private byte[] cinRecto;
+    @Column(name = "cinRecto")
+    private byte[] cinRecto;
 
-    // @Column(name = "cinVerso",columnDefinition = "LONGBLOB")
-    // private byte[] cinVerso;
+    @Column(name = "cinVerso")
+    private byte[] cinVerso;
 
     @OneToMany(mappedBy="client",cascade = CascadeType.ALL)
     private Collection<ComptePayement> comptePayements;
 
-    public UserApp(String nom, String prenom, String numTel, Date passwordChangedTime, String password, String profil, String username) {
+    public UserApp(String nom, String prenom, String numTel, Date passwordChangedTime, String password, String profil, String username, byte[] cinRecto, byte[] cinVerso) {
         this.nom = nom;
         this.prenom = prenom;
         this.numTel = numTel;
@@ -60,8 +60,8 @@ public  class UserApp {
         this.password = password;
         this.profil = profil;
         this.username = username;
-        // this.cinRecto = cinRecto;
-        // this.cinVerso = cinVerso;
+        this.cinRecto = cinRecto;
+        this.cinVerso = cinVerso;
     }
 
 

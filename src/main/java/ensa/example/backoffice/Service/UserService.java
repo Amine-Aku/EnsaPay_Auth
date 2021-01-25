@@ -71,15 +71,15 @@ public class UserService {
         return password;
     }
 
-    public Boolean createAgent(String nom, String prenom, String username, String numTel, String profil) throws IOException {
+    public Boolean createAgent(String nom, String prenom, String username, String numTel, MultipartFile cinRecto, MultipartFile cinVerso, String profil) throws IOException {
 
        UserApp user=new UserApp();
        user.setNom(nom);
        user.setPrenom(prenom);
        user.setUsername(username);
        user.setNumTel(numTel);
-    //    user.setCinRecto(cinRecto.getBytes());
-    //    user.setCinVerso(cinVerso.getBytes());
+       user.setCinRecto(cinRecto.getBytes());
+       user.setCinVerso(cinVerso.getBytes());
        user.setProfil(profil);
 
 

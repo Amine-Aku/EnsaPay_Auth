@@ -44,7 +44,7 @@ public class UserController {
             try {
 
                 String pass=null;
-Boolean bol=userService.createAgent(nom, prenom, username, numTel, profil);
+Boolean bol=userService.createAgent(nom, prenom, username, numTel, cinRecto, cinVerso, profil);
 
 System.out.println(bol);
                 if(bol) {

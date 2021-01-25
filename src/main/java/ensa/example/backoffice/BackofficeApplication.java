@@ -25,7 +25,7 @@ public class BackofficeApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        UserApp userApp=new UserApp("admin","admin","0651354661",new Date(),bCryptPasswordEncoder.encode("admin"),"admin","admin");
+        UserApp userApp=new UserApp("admin","admin","0651354661",new Date(),bCryptPasswordEncoder.encode("admin"),"admin","admin", null, null);
         userRepository.save(userApp);
     }
 }
