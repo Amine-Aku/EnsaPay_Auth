@@ -18,7 +18,7 @@ public  class UserApp {
     private static final long PASSWORD_EXPIRATION_TIME
             = 30L * 24L * 60L * 60L * 1000L;
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id_user;
     @Column(name = "nom")
     private String nom;

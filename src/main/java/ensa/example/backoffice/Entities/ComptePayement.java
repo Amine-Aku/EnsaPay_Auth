@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Entity
 public class ComptePayement {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id_compte;
 
     @Column(name="solde")
