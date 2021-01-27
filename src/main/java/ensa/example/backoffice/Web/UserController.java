@@ -2,11 +2,15 @@ package ensa.example.backoffice.Web;
 
 
 
+import ensa.example.backoffice.Entities.UserApp;
+import ensa.example.backoffice.Repository.UserRepository;
 import ensa.example.backoffice.Service.ResponseMessage;
 import ensa.example.backoffice.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +23,9 @@ import java.io.IOException;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserRepository userRepository;
 
 
 
@@ -44,9 +51,9 @@ public class UserController {
             try {
 
                 String pass=null;
-Boolean bol=userService.createAgent(nom, prenom, username, numTel, cinRecto, cinVerso, profil);
+                Boolean bol=userService.createAgent(nom, prenom, username, numTel, cinRecto, cinVerso, profil);
 
-System.out.println(bol);
+
                 if(bol) {
 
                     message = "Uploaded the file successfully ";
@@ -63,4 +70,21 @@ System.out.println(bol);
             }
         }
         }
+
+    @RequestMapping("/currentAgent")
+    public UserApp currentAgent() {
+
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth);
+        if(!auth.getPrincipal().equals("anonymousUser")) {
+            UserApp user = userRepository.findByUsername(auth.getName());
+            return user;
+        }
+        return null;
+    }
+
+    @RequestMapping("/isFirstAuth")
+    public Boolean isFirstAuth(@RequestBody UserApp user){
+        return  user.getFirstAuth();
+    }
 }

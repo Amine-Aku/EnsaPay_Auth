@@ -60,7 +60,7 @@ System.out.println("JWTauthen");
                 .signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET)
                 .claim("ensaPay", "Payensa")
                 .compact();
-        response.addHeader(SecurityConstants.HEADER_STRING,
+                response.addHeader(SecurityConstants.HEADER_STRING,
                 SecurityConstants.TOKEN_PREFIX+jwtToken);
 
 

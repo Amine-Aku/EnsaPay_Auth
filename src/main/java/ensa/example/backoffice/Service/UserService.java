@@ -43,6 +43,7 @@ public class UserService {
 
     public void changePassword(UserApp user, String newPassword) {
         String encodedPassword = passwordEncoder.encode(newPassword);
+        if(user.getFirstAuth() == true){ user.setFirstAuth(false);}
         user.setPassword(encodedPassword);
 
         user.setPasswordChangedTime(new Date());
@@ -85,8 +86,11 @@ public class UserService {
 
        String pass=this.genererPassword();
 System.out.println(pass);
-      /* String body = "Bonjour Monsieur / Madame \n Votre mot de passe est " + pass + " Bienvenue chez nous";
-           this.smtpMailSender.sendMail(user.getUsername(), "Your Password", body);*/
+      String body = "Bonjour Monsieur / Madame . \n  \n Votre mot de passe est " + pass + ". \n Bienvenue chez nous";
+           //this.smtpMailSender.sendMail(user.getUsername(), "Your Password", body);
+
+        user.setFirstAuth(true);
+        smtpMailSender.sendMail(user.getUsername(), "Your Password", body);
         user.setPassword(passwordEncoder.encode(pass));
       userRepository.save(user);
         return  true;

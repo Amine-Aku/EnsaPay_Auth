@@ -1,5 +1,6 @@
 package ensa.example.backoffice;
 
+import ensa.example.backoffice.Config.SmtpMailSender;
 import ensa.example.backoffice.Entities.UserApp;
 import ensa.example.backoffice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class BackofficeApplication implements CommandLineRunner {
     @Autowired
     UserRepository userRepository;
 
+   
+   
+
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
     public static void main(String[] args) {
@@ -25,7 +29,9 @@ public class BackofficeApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // UserApp userApp=new UserApp("admin","admin","0651354661",new Date(),bCryptPasswordEncoder.encode("admin"),"admin","admin", null, null);
-        // userRepository.save(userApp);
+
+        UserApp userApp=new UserApp("admin","admin","0651354661",new Date(),bCryptPasswordEncoder.encode("admin"),"admin","admin",null,null);
+        userRepository.save(userApp);
+
     }
 }
