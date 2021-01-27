@@ -18,7 +18,7 @@ public  class UserApp {
     private static final long PASSWORD_EXPIRATION_TIME
             = 30L * 24L * 60L * 60L * 1000L;
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id_user;
     @Column(name = "nom")
     private String nom;
@@ -41,13 +41,12 @@ public  class UserApp {
     @Column(name = "username")
     private String username;
 
-    @Column(name="firstAuth")
-    private Boolean firstAuth;
 
-    @Column(name = "cinRecto",columnDefinition = "LONGBLOB")
+
+    @Column(name = "cinRecto")
     private byte[] cinRecto;
 
-    @Column(name = "cinVerso",columnDefinition = "LONGBLOB")
+    @Column(name = "cinVerso")
     private byte[] cinVerso;
 
     @OneToMany(mappedBy="client",cascade = CascadeType.ALL)

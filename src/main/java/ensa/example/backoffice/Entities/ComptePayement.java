@@ -9,11 +9,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
 @Table
+@Entity
 public class ComptePayement {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id_compte;
 
     @Column(name="solde")
