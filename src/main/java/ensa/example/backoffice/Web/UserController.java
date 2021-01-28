@@ -33,7 +33,7 @@ public class UserController {
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         if(!auth.getPrincipal().equals("anonymousUser")) {
             UserApp user = userRepository.findByUsername(auth.getName());
-            return  auth.getFirstAuth();
+            return  user.getFirstAuth();
         }
         return null;
         
