@@ -24,6 +24,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserRepository userRepository;
+
 
     @RequestMapping("/isFirstAuth")
     public Boolean isFirstAuth(@RequestBody UserApp user){
