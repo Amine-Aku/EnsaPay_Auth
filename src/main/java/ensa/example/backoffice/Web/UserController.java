@@ -30,7 +30,7 @@ public class UserController {
 
     @RequestMapping(value = "/isFirstAuth", method = RequestMethod.GET)
     public Boolean isFirstAuth(@RequestBody UserApp user){
-        Authentication auth= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         return  auth.getFirstAuth();
     }
 
