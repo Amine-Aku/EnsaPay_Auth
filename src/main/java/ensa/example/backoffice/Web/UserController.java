@@ -28,12 +28,13 @@ public class UserController {
     UserRepository userRepository;
 
 
-    @RequestMapping("/isFirstAuth")
+    @RequestMapping(value = "/isFirstAuth", method = RequestMethod.GET)
     public Boolean isFirstAuth(@RequestBody UserApp user){
-        return  user.getFirstAuth();
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return  auth.getFirstAuth();
     }
 
-    @RequestMapping("/currentAgent")
+    @RequestMapping(value = "/currentAgent", method = RequestMethod.GET)
     public UserApp currentAgent() {
 
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
