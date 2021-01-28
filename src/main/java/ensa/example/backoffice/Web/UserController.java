@@ -29,9 +29,14 @@ public class UserController {
 
 
     @RequestMapping(value = "/isFirstAuth", method = RequestMethod.GET)
-    public Boolean isFirstAuth(@RequestBody UserApp user){
+    public Boolean isFirstAuth(){
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
-        return  auth.getFirstAuth();
+        if(!auth.getPrincipal().equals("anonymousUser")) {
+            UserApp user = userRepository.findByUsername(auth.getName());
+            return  auth.getFirstAuth();
+        }
+        return null;
+        
     }
 
     @RequestMapping(value = "/currentAgent", method = RequestMethod.GET)
