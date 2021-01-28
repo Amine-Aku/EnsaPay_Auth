@@ -49,6 +49,9 @@ public  class UserApp {
     @Column(name = "cinVerso")
     private byte[] cinVerso;
 
+    @Column(name="firstAuth")
+    private Boolean firstAuth;
+
     @OneToMany(mappedBy="client",cascade = CascadeType.ALL)
     private Collection<ComptePayement> comptePayements;
 
