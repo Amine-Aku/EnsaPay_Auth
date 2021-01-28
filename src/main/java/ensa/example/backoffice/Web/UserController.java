@@ -21,6 +21,22 @@ public class UserController {
     UserService userService;
 
 
+    @RequestMapping("/isFirstAuth")
+    public Boolean isFirstAuth(@RequestBody UserApp user){
+        return  user.getFirstAuth();
+    }
+
+    @RequestMapping("/currentAgent")
+    public UserApp currentAgent() {
+
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth);
+        if(!auth.getPrincipal().equals("anonymousUser")) {
+            UserApp user = userRepository.findByUsername(auth.getName());
+            return user;
+        }
+        return null;
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<ResponseMessage> saveUser(@RequestParam(value = "cinRecto", required = false) MultipartFile cinRecto,
