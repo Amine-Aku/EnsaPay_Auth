@@ -28,15 +28,13 @@ public class UserController {
     UserRepository userRepository;
 
 
-    @RequestMapping(value = "/isFirstAuth", method = RequestMethod.GET)
-    public Boolean isFirstAuth(){
+    @RequestMapping(value = "/changeMdp", method = RequestMethod.POST)
+    public void changeMdp(@RequestBody String mdp){
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         if(!auth.getPrincipal().equals("anonymousUser")) {
             UserApp user = userRepository.findByUsername(auth.getName());
-            return  user.getFirstAuth();
-        }
-        return null;
-        
+            user.changePassword(user, mdp);
+        }        
     }
 
     @RequestMapping(value = "/currentAgent", method = RequestMethod.GET)
