@@ -116,7 +116,7 @@ public class UserService {
             //this.smtpMailSender.sendMail(user.getUsername(), "Your Password", body);
  
          user.setFirstAuth(true);
-         smtpMailSender.sendMail(user.getUsername(), "Your Password", body);
+        //  smtpMailSender.sendMail(user.getUsername(), "Your Password", body);
          user.setPassword(passwordEncoder.encode(pass));
        userRepository.save(user);
          return  true;
