@@ -100,16 +100,14 @@ public class UserService {
 
     }
 
-    public Boolean createUser(String nom, String prenom, String username, String numTel, MultipartFile cinRecto, MultipartFile cinVerso, String profil) throws IOException {
+    public Boolean createUser(String nom, String prenom, String username, String numTel) throws IOException {
 
         UserApp user=new UserApp();
         user.setNom(nom);
         user.setPrenom(prenom);
         user.setUsername(username);
         user.setNumTel(numTel);
-        user.setCinRecto(cinRecto.getBytes());
-        user.setCinVerso(cinVerso.getBytes());
-        user.setProfil(profil);
+        user.setProfil("client");
  
  
         String pass=this.genererPassword();

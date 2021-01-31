@@ -20,8 +20,7 @@ public class ComptePaymentService {
     public ComptePayement saveComptePayment(ComptePayement comptePayement) throws IOException {
 
               userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
-              comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel(),null,null,
-                "client");
+              comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
              return comptePaymentRepository.save(comptePayement);
     }
 }
