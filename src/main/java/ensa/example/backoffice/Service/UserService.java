@@ -99,4 +99,31 @@ public class UserService {
 
 
     }
+
+    public Boolean createUser(String nom, String prenom, String username, String numTel, MultipartFile cinRecto, MultipartFile cinVerso, String profil) throws IOException {
+
+        UserApp user=new UserApp();
+        user.setNom(nom);
+        user.setPrenom(prenom);
+        user.setUsername(username);
+        user.setNumTel(numTel);
+        user.setCinRecto(cinRecto.getBytes());
+        user.setCinVerso(cinVerso.getBytes());
+        user.setProfil(profil);
+ 
+ 
+        String pass=this.genererPassword();
+         System.out.println(pass);
+       String body = "Bonjour Monsieur / Madame . \n  \n Votre mot de passe est " + pass + ". \n Bienvenue chez nous";
+            //this.smtpMailSender.sendMail(user.getUsername(), "Your Password", body);
+ 
+         user.setFirstAuth(true);
+         smtpMailSender.sendMail(user.getUsername(), "Your Password", body);
+         user.setPassword(passwordEncoder.encode(pass));
+       userRepository.save(user);
+         return  true;
+ 
+ 
+ 
+     }
 }
