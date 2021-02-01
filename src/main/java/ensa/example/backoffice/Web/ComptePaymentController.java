@@ -26,4 +26,9 @@ public class ComptePaymentController {
     
     }
 
+    @RequestMapping(value = "/allClients", method = RequestMethod.GET)
+    public List<ComptePayement> getAllComptes()  {
+        return  comptePaymentService.getAllComptes();
+    }
+
 }
