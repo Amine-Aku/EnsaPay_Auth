@@ -17,9 +17,15 @@ public class ComptePaymentController {
     @Autowired
     ComptePaymentService comptePaymentService;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ComptePayement createCompte(@RequestBody ComptePayement comptePayement) throws IOException {
-        return  comptePaymentService.saveComptePayment(comptePayement);
+    public String createCompte(@RequestBody ComptePayement comptePayement) throws IOException {
+        String pass = userService.genererPassword();
+        comptePayement.getClient().setPassword(pass);
+        comptePaymentService.saveComptePayment(comptePayement);
+        return pass;
     }
 
 }

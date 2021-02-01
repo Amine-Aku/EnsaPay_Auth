@@ -18,9 +18,9 @@ public class ComptePaymentService {
     UserService userService;
 
     public ComptePayement saveComptePayment(ComptePayement comptePayement) throws IOException {
-
-              userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
-              comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
+            
+            //   userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
+            //   comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
              return comptePaymentRepository.save(comptePayement);
     }
 }
