@@ -32,8 +32,8 @@ public class ComptePaymentService {
         return pass;
     }
 
-    public List<ComptePayement> getAll() throws IOException {
-        return comptePaymentRepository.getAllComptes();
+    public List<ComptePayement> getAllComptes() throws IOException {
+        return comptePaymentRepository.findAll();
 
     }
 
