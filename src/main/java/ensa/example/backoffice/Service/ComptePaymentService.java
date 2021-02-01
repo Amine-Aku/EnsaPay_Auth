@@ -17,10 +17,12 @@ public class ComptePaymentService {
     @Autowired
     UserService userService;
 
-    public ComptePayement saveComptePayment(ComptePayement comptePayement) throws IOException {
-            
+    public String saveComptePayment(ComptePayement comptePayement) throws IOException {
+        String pass = userService.genererPassword();
+        comptePayement.getClient().setPassword(pass);
             //   userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
             //   comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
-             return comptePaymentRepository.save(comptePayement);
+        comptePaymentRepository.save(comptePayement);
+        return pass;
     }
 }
