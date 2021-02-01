@@ -28,7 +28,7 @@ public class ComptePaymentController {
     }
 
     @RequestMapping(value = "/allClients", method = RequestMethod.GET)
-    public List<ComptePayement> getAllComptes()  {
+    public List<ComptePayement> getAllComptes() throws IOException{
         return  comptePaymentService.getAllComptes();
     }
 
