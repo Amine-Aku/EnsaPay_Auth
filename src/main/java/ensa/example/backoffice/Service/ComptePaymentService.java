@@ -17,9 +17,13 @@ public class ComptePaymentService {
     @Autowired
     UserService userService;
 
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
+
     public String saveComptePayment(ComptePayement comptePayement) throws IOException {
         String pass = userService.genererPassword();
-        comptePayement.getClient().setPassword(pass);
+        comptePayement.getClient().setPassword(bCryptPasswordEncoder.encode(pass));
+        comptePayement.getClient().setProfil("client");
             //   userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
             //   comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
         comptePaymentRepository.save(comptePayement);
