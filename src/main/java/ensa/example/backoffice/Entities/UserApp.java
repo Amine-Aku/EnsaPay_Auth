@@ -58,6 +58,8 @@ public  class UserApp {
     // @JsonIgnore
     // @OneToMany(mappedBy="client",cascade = CascadeType.ALL)
     // private Collection<ComptePayement> comptePayements;
+    @OneToOne(mappedBy="client",cascade = CascadeType.ALL)
+    private ComptePayement comptePayements;
 
     public UserApp(String nom, String prenom, String numTel, Date passwordChangedTime, String password, String profil, String username, byte[] cinRecto, byte[] cinVerso) {
         this.nom = nom;
