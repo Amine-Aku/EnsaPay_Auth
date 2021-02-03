@@ -52,8 +52,12 @@ public  class UserApp {
     @Column(name="firstAuth")
     private Boolean firstAuth;
 
-    @OneToMany(mappedBy="client",cascade = CascadeType.ALL)
-    private Collection<ComptePayement> comptePayements;
+    @Column(name = "isBlacklisted")
+    private Boolean isBlacklisted;
+
+    // @JsonIgnore
+    // @OneToMany(mappedBy="client",cascade = CascadeType.ALL)
+    // private Collection<ComptePayement> comptePayements;
 
     public UserApp(String nom, String prenom, String numTel, Date passwordChangedTime, String password, String profil, String username, byte[] cinRecto, byte[] cinVerso) {
         this.nom = nom;
