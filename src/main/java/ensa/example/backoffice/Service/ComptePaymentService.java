@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.List;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.http.HttpEntity;
 
 import java.io.IOException;
 
