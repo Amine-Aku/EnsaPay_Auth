@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.List;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
@@ -22,10 +23,17 @@ public class ComptePaymentService {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder=new  BCryptPasswordEncoder();
 
+    private String url="https://ensa-pay-bank.herokuapp.com";
+
+    @Autowired
+    RestTemplate restTemplate;
+
     public String saveComptePayment(ComptePayement comptePayement) throws IOException {
         String pass = userService.genererPassword();
         comptePayement.getClient().setPassword(bCryptPasswordEncoder.encode(pass));
         comptePayement.getClient().setProfil("client");
+        HttpEntity<ComptePayement> req = new HttpEntity<ComptePayement>(comptePayement);
+        return restTemplate.postForObject(url+"/comptePayment/creation", req, ComptePayement.class);
             //   userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
             //   comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
         comptePaymentRepository.save(comptePayement);
