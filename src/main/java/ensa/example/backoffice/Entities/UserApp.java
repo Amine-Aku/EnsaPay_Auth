@@ -56,7 +56,7 @@ public  class UserApp {
     private Boolean isBlacklisted;
 
     // @JsonIgnore
-    // @OneToMany(mappedBy="client",cascade = CascadeType.ALL)
+    // @OneToMany(mappedBy="client",  cascade = CascadeType.ALL)
     // private Collection<ComptePayement> comptePayements;
     @OneToOne(mappedBy="client",cascade = CascadeType.ALL)
     private ComptePayement comptePayements;
