@@ -26,17 +26,5 @@ public class ComptePayement {
     @JoinColumn(name="id_client")
     private UserApp client;
 
-    public ComptePayement(int id_compte, Double solde, String typeCompte, int idClient) {
-        this.id_compte = id_compte;
-        this.solde = solde;
-        this.typeCompte = typeCompte;
-        this.client.setId_user(idClient);
-    }
-
-    public ComptePayement(Double solde, String typeCompte, int id_client) {
-        this.solde = solde;
-        this.typeCompte = typeCompte;
-        this.client.setId_user(id_client);
-    }
 
 }
