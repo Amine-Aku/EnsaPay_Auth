@@ -34,13 +34,9 @@ public class ComptePayementService {
         String pass = userService.genererPassword();
         comptePayement.getClient().setPassword(bCryptPasswordEncoder.encode(pass));
         comptePayement.getClient().setProfil("client");
-        // HttpEntity<ComptePayement> req = new HttpEntity<ComptePayement>(comptePayement);
-        // System.out.println("saveComptePayement before restTemplate");
-        // restTemplate.postForObject(url+"/ComptePayement/creation", req, String.class);
-        // System.out.println("saveComptePayement before restTemplate");
             //   userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
             //   comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
-        // ComptePayementRepository.save(comptePayement);
+        comptePaymentRepository.save(comptePayement);
         return pass;
     }
 
