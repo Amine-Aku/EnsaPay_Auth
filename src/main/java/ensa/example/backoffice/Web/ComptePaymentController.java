@@ -1,7 +1,7 @@
 package ensa.example.backoffice.Web;
 
 import ensa.example.backoffice.Entities.ComptePayement;
-import ensa.example.backoffice.Service.ComptePaymentService;
+import ensa.example.backoffice.Service.ComptePayementService;
 import ensa.example.backoffice.Service.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,32 +14,32 @@ import java.io.IOException;
 @CrossOrigin
 @RestController
 @RequestMapping("comptePay")
-public class ComptePaymentController {
+public class ComptePayementController {
 
     @Autowired
-    ComptePaymentService comptePaymentService;
+    ComptePayementService ComptePayementService;
 
 
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String createCompte(@RequestBody ComptePayement comptePayement) throws IOException {
         
-        return comptePaymentService.saveComptePayment(comptePayement);
+        return ComptePayementService.saveComptePayement(comptePayement);
     
     }
 
     @RequestMapping(value = "/allClients", method = RequestMethod.GET)
     public List<ComptePayement> getAllComptes() throws IOException{
-        return  comptePaymentService.getAllComptes();
+        return  ComptePayementService.getAllComptes();
     }
 
     @Autowired
     OpenCsvWriterByAppend openCsvWriterByAppend;
 
     @RequestMapping(value="/creation",method= RequestMethod.POST)
-    public void saveComptePay(@RequestBody ComptePayment comptePayment) {
-        comptePaymentService.saveComptePayment(comptePayement);
-         openCsvWriterByAppend.addCompteToCsvFile(comptePayment);
+    public void saveComptePay(@RequestBody ComptePayement ComptePayement) {
+        ComptePayementService.saveComptePayement(comptePayement);
+         openCsvWriterByAppend.addCompteToCsvFile(ComptePayement);
     }
 
 }

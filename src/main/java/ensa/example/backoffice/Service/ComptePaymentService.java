@@ -1,7 +1,7 @@
 package ensa.example.backoffice.Service;
 
 import ensa.example.backoffice.Entities.ComptePayement;
-import ensa.example.backoffice.Repository.ComptePaymentRepository;
+import ensa.example.backoffice.Repository.ComptePayementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,10 +13,10 @@ import org.springframework.http.HttpEntity;
 import java.io.IOException;
 
 @Service
-public class ComptePaymentService {
+public class ComptePayementService {
 
     @Autowired
-    ComptePaymentRepository comptePaymentRepository;
+    ComptePayementRepository ComptePayementRepository;
 
     @Autowired
     UserService userService;
@@ -30,22 +30,22 @@ public class ComptePaymentService {
     // RestTemplate restTemplate;
 
 
-    public String saveComptePayment(ComptePayement comptePayement) throws IOException {
+    public String saveComptePayement(ComptePayement comptePayement) throws IOException {
         String pass = userService.genererPassword();
         comptePayement.getClient().setPassword(bCryptPasswordEncoder.encode(pass));
         comptePayement.getClient().setProfil("client");
         // HttpEntity<ComptePayement> req = new HttpEntity<ComptePayement>(comptePayement);
-        // System.out.println("saveComptePayment before restTemplate");
-        // restTemplate.postForObject(url+"/comptePayment/creation", req, String.class);
-        // System.out.println("saveComptePayment before restTemplate");
+        // System.out.println("saveComptePayement before restTemplate");
+        // restTemplate.postForObject(url+"/ComptePayement/creation", req, String.class);
+        // System.out.println("saveComptePayement before restTemplate");
             //   userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
             //   comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
-        // comptePaymentRepository.save(comptePayement);
+        // ComptePayementRepository.save(comptePayement);
         return pass;
     }
 
     public List<ComptePayement> getAllComptes() throws IOException {
-        return comptePaymentRepository.findAll();
+        return ComptePayementRepository.findAll();
 
     }
 

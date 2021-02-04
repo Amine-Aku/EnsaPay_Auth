@@ -2,7 +2,7 @@ package ensa.example.backoffice.Config;
 
 
 
-import ensa.example.backoffice.Entities.ComptePayment;
+import ensa.example.backoffice.Entities.ComptePayement;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;
@@ -41,15 +41,15 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
                    System.out.println("file not exist");
                 }
 
-                List<ComptePayment> results = jdbcTemplate.query("SELECT id_compte, solde,type_compte,id_client FROM compte_payement", new RowMapper<ComptePayment>() {
+                List<ComptePayement> results = jdbcTemplate.query("SELECT id_compte, solde,type_compte,id_client FROM compte_payement", new RowMapper<ComptePayement>() {
                     @Override
-                    public ComptePayment mapRow(ResultSet rs, int row) throws SQLException {
-                        return new ComptePayment(rs.getInt(1), rs.getDouble(2),rs.getString(3),rs.getInt(4));
+                    public ComptePayement mapRow(ResultSet rs, int row) throws SQLException {
+                        return new ComptePayement(rs.getInt(1), rs.getDouble(2),rs.getString(3),rs.getInt(4));
                     }
                 });
 
-                for (ComptePayment comptePayment : results) {
-                   System.out.println("Found <" + comptePayment + "> in the database.");
+                for (ComptePayement ComptePayement : results) {
+                   System.out.println("Found <" + ComptePayement + "> in the database.");
                 }
 
             }

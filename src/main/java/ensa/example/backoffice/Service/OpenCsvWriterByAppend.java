@@ -1,7 +1,7 @@
 package ensa.example.backoffice.Service;
 
 import ensa.example.backoffice.Config.TaskletStep;
-import ensa.example.backoffice.Entities.ComptePayment;
+import ensa.example.backoffice.Entities.ComptePayement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +13,18 @@ public class OpenCsvWriterByAppend {
     @Autowired
     TaskletStep taskletStep;
 
-    public  void addCompteToCsvFile(ComptePayment comptePayment){
+    public  void addCompteToCsvFile(ComptePayement ComptePayement){
         try {
             System.out.println("add Compte To csv file");
             System.out.println(taskletStep.getCsvFilename());
             FileWriter csvwriter = new FileWriter(taskletStep.getCsvFilename());
 
-            csvwriter.append(comptePayment.getSolde().toString());
+            csvwriter.append(ComptePayement.getSolde().toString());
             csvwriter.append(",");
 
-            csvwriter.append(comptePayment.getType_compte());
+            csvwriter.append(ComptePayement.getType_compte());
             csvwriter.append(",");
-            csvwriter.append((char)comptePayment.getId_client());
+            csvwriter.append((char)ComptePayement.getId_client());
 
 
             csvwriter.close();

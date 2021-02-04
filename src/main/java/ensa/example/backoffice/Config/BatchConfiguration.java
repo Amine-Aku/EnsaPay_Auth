@@ -1,6 +1,6 @@
 package ensa.example.backoffice.Config;
 
-import ensa.example.backoffice.Entities.ComptePayment;
+import ensa.example.backoffice.Entities.ComptePayement;
 import ensa.example.backoffice.Service.OpenCsvWriterByAppend;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -64,24 +64,24 @@ public class BatchConfiguration {
 
             System.out.println("File not found!");
         }
-        openCsvWriterByAppend.addCompteToCsvFile(new ComptePayment(200.,"c80000",1),filN);
+        openCsvWriterByAppend.addCompteToCsvFile(new ComptePayement(200.,"c80000",1),filN);
         }*/
 
 
     /*@StepScope
     @Bean
-    public FlatFileItemReader<ComptePayment> reader() throws IOException {
-        FlatFileItemReader<ComptePayment> reader = new FlatFileItemReader<ComptePayment>();
+    public FlatFileItemReader<ComptePayement> reader() throws IOException {
+        FlatFileItemReader<ComptePayement> reader = new FlatFileItemReader<ComptePayement>();
 
 
         reader.setResource(new ClassPathResource("newFile.csv"));
        // reader.setResource(new ClassPathResource(fileName));
-        reader.setLineMapper(new DefaultLineMapper<ComptePayment>() {{
+        reader.setLineMapper(new DefaultLineMapper<ComptePayement>() {{
             setLineTokenizer(new DelimitedLineTokenizer() {{
                 setNames(new String[] { "solde","type_compte","id_client"});
             }});
-            setFieldSetMapper(new BeanWrapperFieldSetMapper<ComptePayment>() {{
-                setTargetType(ComptePayment.class);
+            setFieldSetMapper(new BeanWrapperFieldSetMapper<ComptePayement>() {{
+                setTargetType(ComptePayement.class);
             }});
         }});
         return reader;
@@ -93,26 +93,26 @@ public class BatchConfiguration {
     private static final String OVERRIDDEN_BY_EXPRESSION = "file_name";
     @Bean
     @StepScope
-    public FlatFileItemReader<ComptePayment> reader(
+    public FlatFileItemReader<ComptePayement> reader(
             @Value("#{jobParameters[fileName]}") String pathToFile){
         System.out.println("path file" + pathToFile);
-        FlatFileItemReader<ComptePayment> itemReader = new FlatFileItemReader<ComptePayment>();
+        FlatFileItemReader<ComptePayement> itemReader = new FlatFileItemReader<ComptePayement>();
         //itemReader.setLineMapper(lineMapper());
-        itemReader.setLineMapper(new DefaultLineMapper<ComptePayment>() {{
+        itemReader.setLineMapper(new DefaultLineMapper<ComptePayement>() {{
             setLineTokenizer(new DelimitedLineTokenizer() {{
                 setNames(new String[] { "solde","type_compte","id_client"});
             }});
-            setFieldSetMapper(new BeanWrapperFieldSetMapper<ComptePayment>() {{
-                setTargetType(ComptePayment.class);
+            setFieldSetMapper(new BeanWrapperFieldSetMapper<ComptePayement>() {{
+                setTargetType(ComptePayement.class);
             }});
         }});
         itemReader.setResource(new PathResource(pathToFile));
         return itemReader;
     }
     @Bean
-    public JdbcBatchItemWriter<ComptePayment> writer() {
-        JdbcBatchItemWriter<ComptePayment> writer = new JdbcBatchItemWriter<ComptePayment>();
-        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<ComptePayment>());
+    public JdbcBatchItemWriter<ComptePayement> writer() {
+        JdbcBatchItemWriter<ComptePayement> writer = new JdbcBatchItemWriter<ComptePayement>();
+        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<ComptePayement>());
         writer.setSql("INSERT INTO compte_payement (solde,type_compte,id_client) VALUES (:solde,:type_compte,:id_client)");
 
         writer.setDataSource(dataSource);
@@ -135,7 +135,7 @@ public class BatchConfiguration {
     public Step step1() throws IOException {
         System.out.println("step1");
         return stepBuilderFactory.get("step1")
-                .<ComptePayment,ComptePayment> chunk(10)
+                .<ComptePayement,ComptePayement> chunk(10)
                 .reader(reader(OVERRIDDEN_BY_EXPRESSION))
                 .processor(processor())
                 .writer(writer())
