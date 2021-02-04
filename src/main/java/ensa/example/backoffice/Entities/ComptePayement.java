@@ -35,7 +35,7 @@ public class ComptePayement {
 
     public ComptePayement(Double solde, String typeCompte, int id_client) {
         this.solde = solde;
-        this.typeCompte = type_compte;
+        this.typeCompte = typeCompte;
         this.client.setId_user(id_client);
     }
 
