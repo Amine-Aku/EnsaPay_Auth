@@ -1,6 +1,6 @@
 package com.ensa.bank.Config;
 
-import com.ensa.bank.Entities.ComptePayment;
+import ensa.example.backoffice.Entities.ComptePayment;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 

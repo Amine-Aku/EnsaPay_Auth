@@ -2,7 +2,7 @@ package com.ensa.bank.Config;
 
 
 
-import com.ensa.bank.Entities.ComptePayment;
+import ensa.example.backoffice.Entities.ComptePayment;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;

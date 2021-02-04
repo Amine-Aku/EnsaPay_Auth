@@ -1,7 +1,7 @@
 package com.ensa.bank.Service;
 
 import com.ensa.bank.Config.TaskletStep;
-import com.ensa.bank.Entities.ComptePayment;
+import ensa.example.backoffice.Entities.ComptePayment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
