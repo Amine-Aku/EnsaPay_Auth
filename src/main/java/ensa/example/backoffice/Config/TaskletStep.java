@@ -37,7 +37,7 @@ public class TaskletStep implements Tasklet {
 
                 System.out.println("### TaskletStep:" + file.getName() + " is deleted!");
 
-                this.setCsvFilename("src\\main\\resources\\compte"-"+i+".csv");
+                this.setCsvFilename("src\\main\\resources\\compte-"+i+".csv");
                 File file2 = new File(this.getCsvFilename());
                 file2.createNewFile();
 
