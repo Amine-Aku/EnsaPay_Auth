@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import com.ensa.bank.Service.OpenCsvWriterByAppend;
 
 import java.io.IOException;
 
@@ -30,6 +31,15 @@ public class ComptePaymentController {
     @RequestMapping(value = "/allClients", method = RequestMethod.GET)
     public List<ComptePayement> getAllComptes() throws IOException{
         return  comptePaymentService.getAllComptes();
+    }
+
+    @Autowired
+    OpenCsvWriterByAppend openCsvWriterByAppend;
+
+    @RequestMapping(value="/creation",method= RequestMethod.POST)
+    public void saveComptePay(@RequestBody ComptePayment comptePayment) {
+        comptePaymentService.saveComptePayment(comptePayement);
+         openCsvWriterByAppend.addCompteToCsvFile(comptePayment);
     }
 
 }

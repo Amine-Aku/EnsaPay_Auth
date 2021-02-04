@@ -26,16 +26,18 @@ public class ComptePaymentService {
 
     private String url="https://ensa-pay-bank.herokuapp.com";
 
-    @Autowired
-    RestTemplate restTemplate;
+    // @Autowired
+    // RestTemplate restTemplate;
 
 
     public String saveComptePayment(ComptePayement comptePayement) throws IOException {
         String pass = userService.genererPassword();
         comptePayement.getClient().setPassword(bCryptPasswordEncoder.encode(pass));
         comptePayement.getClient().setProfil("client");
-        HttpEntity<ComptePayement> req = new HttpEntity<ComptePayement>(comptePayement);
-        restTemplate.postForObject(url+"/comptePayment/creation", req, String.class);
+        // HttpEntity<ComptePayement> req = new HttpEntity<ComptePayement>(comptePayement);
+        // System.out.println("saveComptePayment before restTemplate");
+        // restTemplate.postForObject(url+"/comptePayment/creation", req, String.class);
+        // System.out.println("saveComptePayment before restTemplate");
             //   userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
             //   comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
         // comptePaymentRepository.save(comptePayement);
