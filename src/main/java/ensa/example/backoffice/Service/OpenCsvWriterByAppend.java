@@ -1,6 +1,6 @@
-package com.ensa.bank.Service;
+package ensa.example.backoffice.Service;
 
-import com.ensa.bank.Config.TaskletStep;
+import ensa.example.backoffice.Config.TaskletStep;
 import ensa.example.backoffice.Entities.ComptePayment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

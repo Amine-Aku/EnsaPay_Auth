@@ -1,7 +1,7 @@
-package com.ensa.bank.Config;
+package ensa.example.backoffice.Config;
 
-import com.ensa.bank.Entities.ComptePayment;
-import com.ensa.bank.Service.OpenCsvWriterByAppend;
+import ensa.example.backoffice.Entities.ComptePayment;
+import ensa.example.backoffice.Service.OpenCsvWriterByAppend;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.*;

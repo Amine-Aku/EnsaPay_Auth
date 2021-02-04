@@ -1,4 +1,4 @@
-package com.ensa.bank.Config;
+package ensa.example.backoffice.Config;
 
 import java.io.File;
 import java.io.IOException;
