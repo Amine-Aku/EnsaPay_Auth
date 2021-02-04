@@ -23,6 +23,11 @@ public class BackofficeApplication implements CommandLineRunner {
 
     }
 
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
     @Override
     public void run(String... args) throws Exception {
         // UserApp userApp=new UserApp("admin","admin","0651354661",new Date(),bCryptPasswordEncoder.encode("admin"),"admin","admin", null, null);
