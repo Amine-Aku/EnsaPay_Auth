@@ -37,7 +37,7 @@ public class ComptePayementController {
     OpenCsvWriterByAppend openCsvWriterByAppend;
 
     @RequestMapping(value="/creation",method= RequestMethod.POST)
-    public void saveComptePay(@RequestBody ComptePayement comptePayement) {
+    public void saveComptePay(@RequestBody ComptePayement comptePayement) throws IOException {
         ComptePayementService.saveComptePayement(comptePayement);
          openCsvWriterByAppend.addCompteToCsvFile(comptePayement);
     }
