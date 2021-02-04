@@ -29,13 +29,13 @@ public class ComptePayement {
     public ComptePayement(int id_compte, Double solde, String typeCompte, int idClient) {
         this.id_compte = id_compte;
         this.solde = solde;
-        this.type_compte = typeCompte;
+        this.typeCompte = typeCompte;
         this.client.setId_user(idClient);
     }
 
-    public ComptePayement(Double solde, String type_compte, int id_client) {
+    public ComptePayement(Double solde, String typeCompte, int id_client) {
         this.solde = solde;
-        this.type_compte = type_compte;
+        this.typeCompte = type_compte;
         this.client.setId_user(id_client);
     }
 
