@@ -35,10 +35,10 @@ public class ComptePaymentService {
         comptePayement.getClient().setPassword(bCryptPasswordEncoder.encode(pass));
         comptePayement.getClient().setProfil("client");
         HttpEntity<ComptePayement> req = new HttpEntity<ComptePayement>(comptePayement);
-        return restTemplate.postForObject(url+"/comptePayment/creation", req, String.class);
+        restTemplate.postForObject(url+"/comptePayment/creation", req, String.class);
             //   userService.createUser(comptePayement.getClient().getNom(),comptePayement.getClient().getPrenom(),
             //   comptePayement.getClient().getUsername(),comptePayement.getClient().getNumTel());
-        comptePaymentRepository.save(comptePayement);
+        // comptePaymentRepository.save(comptePayement);
         return pass;
     }
 
