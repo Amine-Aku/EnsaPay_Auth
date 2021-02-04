@@ -22,9 +22,9 @@ public class OpenCsvWriterByAppend {
             csvwriter.append(ComptePayement.getSolde().toString());
             csvwriter.append(",");
 
-            csvwriter.append(ComptePayement.getType_compte());
+            csvwriter.append(ComptePayement.getTypeCompte());
             csvwriter.append(",");
-            csvwriter.append((char)ComptePayement.getId_client());
+            csvwriter.append((char)ComptePayement.getClient()getId_user());
 
 
             csvwriter.close();
